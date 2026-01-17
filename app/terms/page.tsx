@@ -1,0 +1,252 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export const metadata = {
+  title: "Terms of Service | Shad Themes",
+  description: "Terms of Service for Shad Themes - Legal terms and conditions for using our theme generation service.",
+};
+
+const TermsOfService = () => {
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="mb-8">
+        <Button variant="ghost" size="sm" asChild className="mb-4">
+          <Link href="/" className="gap-2">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+        <h1 className="text-4xl font-bold text-foreground mb-2">Terms of Service</h1>
+        <p className="text-muted-foreground">Last updated: January 16, 2026</p>
+      </div>
+
+      <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">1. Acceptance of Terms</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            By accessing and using Shad Themes (&quot;the Service&quot;), you accept and agree to be bound by the terms
+            and provisions of this agreement. If you do not agree to these Terms of Service, please do not
+            use the Service.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We reserve the right to update and change these Terms of Service at any time without notice.
+            Continued use of the Service after any such changes shall constitute your consent to such changes.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">2. Description of Service</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Shad Themes is a web-based tool that generates accessible color themes and design systems from uploaded
+            images. The Service includes:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Intelligent color extraction from images</li>
+            <li>Automatic generation of light and dark themes</li>
+            <li>OKLCH color space conversion and processing</li>
+            <li>WCAG contrast ratio calculations</li>
+            <li>Export of CSS variables for shadcn/ui and similar frameworks</li>
+            <li>Multiple theme strategy options</li>
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">3. User Obligations</h2>
+          <h3 className="text-xl font-semibold text-foreground mb-3">3.1 Acceptable Use</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Upload images that contain illegal, harmful, threatening, abusive, or objectionable content</li>
+            <li>Upload images that infringe on any third party&apos;s intellectual property rights</li>
+            <li>Use the Service to generate themes for malicious or harmful purposes</li>
+            <li>Attempt to reverse engineer, decompile, or disassemble any part of the Service</li>
+            <li>Use automated systems or software to extract data from the Service</li>
+            <li>Interfere with or disrupt the Service or servers or networks connected to the Service</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-foreground mb-3">3.2 Image Rights</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            You represent and warrant that you own or have the necessary licenses, rights, consents, and permissions
+            to upload and process any images through the Service. You retain all ownership rights to your uploaded images.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">4. Intellectual Property Rights</h2>
+          <h3 className="text-xl font-semibold text-foreground mb-3">4.1 Our Rights</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Service, including its original content, features, and functionality, is owned by Shad Themes and
+            is protected by international copyright, trademark, patent, trade secret, and other intellectual
+            property laws.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mb-3">4.2 Generated Content</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            You retain all rights to the themes and CSS code generated by the Service. The generated themes are
+            yours to use in personal or commercial projects without restriction. We do not claim any ownership
+            over your generated themes.
+          </p>
+
+          <h3 className="text-xl font-semibold text-foreground mb-3">4.3 Open Source</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Shad Themes may be released under an open-source license. Please refer to the LICENSE file in our
+            GitHub repository for specific terms regarding code reuse and distribution.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">5. Service Availability</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We strive to provide uninterrupted access to the Service, but we cannot guarantee that the Service
+            will be available at all times. The Service may be subject to:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Scheduled maintenance and updates</li>
+            <li>Emergency maintenance</li>
+            <li>Technical difficulties or outages</li>
+            <li>Modifications, suspensions, or discontinuation without prior notice</li>
+          </ul>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We are not liable for any interruption of service or loss of data resulting from service unavailability.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">6. Disclaimer of Warranties</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR
+            IMPLIED, INCLUDING BUT NOT LIMITED TO:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Warranties of merchantability or fitness for a particular purpose</li>
+            <li>Warranties that the Service will be uninterrupted or error-free</li>
+            <li>Warranties regarding the accuracy, reliability, or completeness of generated themes</li>
+            <li>Warranties that generated themes will meet your specific requirements</li>
+          </ul>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            You acknowledge that generated themes should be reviewed and tested before use in production environments.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">7. Limitation of Liability</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SHAD THEMES, ITS OFFICERS, DIRECTORS, EMPLOYEES,
+            OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING
+            WITHOUT LIMITATION:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Loss of profits, data, use, or other intangible losses</li>
+            <li>Damages resulting from unauthorized access to or use of our servers</li>
+            <li>Damages resulting from any content generated through the Service</li>
+            <li>Damages resulting from errors or omissions in generated themes</li>
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">8. Indemnification</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            You agree to defend, indemnify, and hold harmless Shad Themes and its affiliates from and against any
+            claims, damages, obligations, losses, liabilities, costs, or debt, and expenses arising from:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Your use of and access to the Service</li>
+            <li>Your violation of these Terms of Service</li>
+            <li>Your violation of any third party right, including intellectual property rights</li>
+            <li>Images you upload to the Service</li>
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">9. Third-Party Links and Services</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Service may contain links to third-party websites or services that are not owned or controlled
+            by Shad Themes. We have no control over, and assume no responsibility for, the content, privacy policies,
+            or practices of any third-party websites or services.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Service integrates with shadcn/ui and other open-source projects. Your use of generated themes
+            with these frameworks is subject to their respective licenses and terms.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">10. Accessibility Compliance</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            While we provide WCAG contrast ratio calculations and aim to generate accessible themes, we do not
+            guarantee that generated themes will meet all accessibility requirements for your specific use case.
+            You are responsible for:
+          </p>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2 mb-4">
+            <li>Testing generated themes for accessibility compliance</li>
+            <li>Making necessary adjustments to meet your accessibility requirements</li>
+            <li>Ensuring compliance with applicable accessibility laws and regulations</li>
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">11. Termination</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We reserve the right to terminate or suspend access to the Service immediately, without prior notice
+            or liability, for any reason, including without limitation if you breach these Terms.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Upon termination, your right to use the Service will immediately cease. However, you retain all rights
+            to themes you generated before termination.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">12. Governing Law</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which
+            Shad Themes operates, without regard to its conflict of law provisions.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Any disputes arising from these Terms or the Service shall be resolved through binding arbitration
+            or in the courts of the applicable jurisdiction.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">13. Changes to Terms</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            We reserve the right to modify or replace these Terms at any time. If a revision is material, we will
+            provide at least 30 days&apos; notice prior to any new terms taking effect.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            By continuing to access or use the Service after revisions become effective, you agree to be bound by
+            the revised terms.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">14. Severability</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining
+            provisions of these Terms will remain in effect.
+          </p>
+        </section>
+
+        <section className="mb-8 bg-primary/5 border border-primary/20 rounded-lg p-6">
+          <h2 className="text-2xl font-semibold text-foreground mb-4">Agreement</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            BY USING SHAD THEMES, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE, UNDERSTAND THEM,
+            AND AGREE TO BE BOUND BY THEM. IF YOU DO NOT AGREE TO THESE TERMS, YOU ARE NOT AUTHORIZED TO USE
+            THE SERVICE.
+          </p>
+        </section>
+      </div>
+
+      <div className="mt-12 pt-8 border-t border-border">
+        <Button asChild>
+          <Link href="/">Return to Home</Link>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default TermsOfService;
