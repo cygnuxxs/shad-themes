@@ -215,7 +215,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
         {/* Brand */}
         <div className="space-y-4">
-          <h3 className="text-xl font-bold text-foreground">Lumina <span className="text-primary">UI</span></h3>
+          <h3 className="text-xl font-bold text-foreground">Shad <span className="text-primary">Themes</span></h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Transform images into production-ready design systems with modern color science.
           </p>
