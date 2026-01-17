@@ -279,7 +279,7 @@ const Homepage = () => (
         <Badge>v1.0 Beta Now Live</Badge>
 
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-7xl">
-          Lumina <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">UI</span>
+          Shad <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">Themes</span>
         </h1>
 
         <h2 className="text-xl font-semibold text-foreground sm:text-2xl max-w-3xl leading-tight">
