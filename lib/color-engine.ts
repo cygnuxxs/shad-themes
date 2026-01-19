@@ -162,7 +162,7 @@ export class ColorEngine {
     const accentChroma = isAchromatic ? 0 : Math.max(safePrimaryChroma, 0.12);
 
     const lightVals: Record<string, OklchColor> = {
-      bg: { l: 0.99, c: neutralChroma * 0.15, h: neutralHue },
+      bg: { l: 0.96, c: neutralChroma * 0.15, h: neutralHue },
       card: {
         l: 1,
         c: neutralChroma * 0.3,
@@ -174,14 +174,14 @@ export class ColorEngine {
         h: neutralHue,
       },
       muted: { l: 0.94, c: neutralChroma * 0.5, h: neutralHue }, // Slightly more tinted
-      border: { l: 0.91, c: neutralChroma * 0.1, h: neutralHue },
-      input: { l: 0.91, c: neutralChroma * 2, h: neutralHue },
+      border: { l: 0.8, c: neutralChroma * 0.1, h: neutralHue },
+      input: { l: 0.8, c: neutralChroma * 2, h: neutralHue },
       primary: lightPrimary,
-      secondary: { l: 0.95, c: safePrimaryChroma * 0.3, h: neutralHue }, // Tinted secondary
+      secondary: { l: 0.9, c: safePrimaryChroma * 0.3, h: neutralHue }, // Tinted secondary
       accent: {
-        l: 0.94,
-        c: accentChroma * 0.25,
-        h: accentHue,
+        l: 0.9,
+        c: safePrimaryChroma * 0.08,
+        h: neutralHue,
       },
       destructive: { l: 0.55, c: 0.22, h: 25 },
       ring: {
@@ -200,7 +200,7 @@ export class ColorEngine {
         h: neutralHue,
       },
       muted: { l: 0.20, c: neutralChroma * 2, h: neutralHue },
-      border: { l: 0.26, c: neutralChroma * 0.1, h: neutralHue },
+      border: { l: 0.28, c: neutralChroma * 0.1, h: neutralHue },
       input: { l: 0.4, c: neutralChroma * 0.05, h: neutralHue },
       primary: darkPrimary,
       secondary: { l: 0.22, c: safePrimaryChroma * 0.3, h: primaryHue },
