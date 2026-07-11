@@ -1,31 +1,31 @@
 "use client"
 
-import { useEffect, useState, useMemo } from "react"
-import { ColorEngine, ThemeType } from "@/lib/color-engine"
+import { useEffect, useState, useMemo, useCallback } from "react"
+import { ColorEngine, ExtractedColor, ThemeType } from "@/lib/color-engine"
 import { useThemeStore } from "@/lib/theme-store"
 import { Loader2 } from "lucide-react"
 import { ColorPalette } from "./theme-injector/color-palette"
 import { StyleSelector } from "./theme-injector/style-selector"
+import { IntensitySlider } from "./theme-injector/intensity-slider"
 import { useThemeShortcuts } from "./theme-injector/use-theme-shortcuts"
 
 export function ThemeInjector({ imageUrl }: { imageUrl: string }) {
-  const [colors, setColors] = useState<string[]>([])
-  const [selectedColor, setSelectedColor] = useState<string | null>(null)
+  const [extractedColors, setExtractedColors] = useState<ExtractedColor[]>([])
+  const [selectedColor, setSelectedColor]     = useState<ExtractedColor | null>(null)
   const [selectedStrategy, setSelectedStrategy] = useState<ThemeType>("vivid")
-  const [isExtracting, setIsExtracting] = useState(false)
+  const [chromaMultiplier, setChromaMultiplier] = useState(1)
+  const [isExtracting, setIsExtracting]       = useState(false)
 
   const { setThemeCSS } = useThemeStore()
 
-  // 1. Memoize Engine creation
   const engine = useMemo(() => {
     if (!imageUrl) return null
     return new ColorEngine(imageUrl)
   }, [imageUrl])
 
-  // 2. Handle Color Extraction (Async with Cleanup)
   useEffect(() => {
     if (!engine) {
-      setColors([])
+      setExtractedColors([])
       return
     }
 
@@ -34,13 +34,14 @@ export function ThemeInjector({ imageUrl }: { imageUrl: string }) {
 
     const extract = async () => {
       try {
-        const extractedColors = await engine.extractColors()
+        const extracted = await engine.extractColors()
         if (isMounted) {
-          setColors(extractedColors)
-          // Auto-select the first color if none selected or previous selection invalid
-          if (extractedColors.length > 0) {
+          setExtractedColors(extracted)
+          if (extracted.length > 0) {
             setSelectedColor((prev) =>
-              prev && extractedColors.includes(prev) ? prev : extractedColors[0]
+              prev && extracted.find((ec) => ec.oklch === prev.oklch)
+                ? prev
+                : extracted[0]
             )
           }
         }
@@ -52,57 +53,48 @@ export function ThemeInjector({ imageUrl }: { imageUrl: string }) {
     }
 
     extract()
-
-    return () => {
-      isMounted = false
-    }
+    return () => { isMounted = false }
   }, [engine])
 
-  // 3. Generate CSS (Pure Calculation)
   const themeCSS = useMemo(() => {
     if (!engine || !selectedColor) return ""
-    const themes = engine.generateThemes(selectedColor)
+    const themes = engine.generateThemes(selectedColor.oklch, chromaMultiplier)
     return themes[selectedStrategy] || ""
-  }, [engine, selectedColor, selectedStrategy])
+  }, [engine, selectedColor, selectedStrategy, chromaMultiplier])
 
-  // 4. Inject CSS (Side Effect)
   useEffect(() => {
-    if (themeCSS) {
-      setThemeCSS(themeCSS)
-    }
+    if (themeCSS) setThemeCSS(themeCSS)
   }, [themeCSS, setThemeCSS])
 
-  // 5. Setup Keyboard Shortcuts
   useThemeShortcuts(setSelectedStrategy)
 
   if (!imageUrl) return null
 
   return (
     <div className="w-full max-w-md rounded-xl border bg-card/50 p-4 shadow-sm backdrop-blur-sm transition-all animate-in fade-in slide-in-from-bottom-2">
-      {/* Inject Style locally for immediate feedback, while Store handles global */}
-      {themeCSS && (
-        <style
-          id="dynamic-theme-local"
-          dangerouslySetInnerHTML={{ __html: themeCSS }}
-        />
-      )}
 
-      {isExtracting && colors.length === 0 ? (
-        <div className="flex h-32 items-center justify-center text-muted-foreground">
-          <Loader2 className="h-6 w-6 animate-spin" />
-          <span className="ml-2 text-sm">Extracting palette...</span>
+      {isExtracting && extractedColors.length === 0 ? (
+        <div className="flex h-28 items-center justify-center text-muted-foreground">
+          <Loader2 className="h-5 w-5 animate-spin" />
+          <span className="ml-2 text-sm">Extracting palette…</span>
         </div>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2">
-          <ColorPalette
-            colors={colors}
-            selectedColor={selectedColor}
-            onSelect={setSelectedColor}
-          />
-          <StyleSelector
-            selectedStrategy={selectedStrategy}
-            selectedColor={selectedColor}
-            onSelect={setSelectedStrategy}
+        <div className="flex flex-col gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ColorPalette
+              colors={extractedColors}
+              selectedColor={selectedColor}
+              onSelect={setSelectedColor}
+            />
+            <StyleSelector
+              selectedStrategy={selectedStrategy}
+              selectedColor={selectedColor?.oklch ?? null}
+              onSelect={setSelectedStrategy}
+            />
+          </div>
+          <IntensitySlider
+            value={chromaMultiplier}
+            onChange={setChromaMultiplier}
           />
         </div>
       )}

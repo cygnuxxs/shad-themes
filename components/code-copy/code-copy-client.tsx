@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useImageStore, useThemeStore } from "@/lib/theme-store";
+import { useThemeStore } from "@/lib/theme-store";
 import { ThemeCodeViewer } from "./view-code";
 import { CopyButton } from "./copy-button";
 import { highlightCode } from "@/lib/highlight-code";
 
 export const CodeCopyClient = () => {
   const { themeCSS } = useThemeStore();
-  const { url } = useImageStore();
   const [highlightedCode, setHighlightedCode] = useState<string>("");
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export const CodeCopyClient = () => {
 
   return (
     <div className="flex gap-2 items-center">
-      {url && (
+      {themeCSS && (
         <>
           <CopyButton value={themeCSS} />
           <ThemeCodeViewer

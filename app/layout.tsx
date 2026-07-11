@@ -4,18 +4,19 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "sonner";
+import { GlobalThemeInjector } from "@/components/global-theme-injector";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  preload : true,
+  preload: true,
 });
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display : 'swap',
+  display: 'swap',
 });
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display : 'swap' });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: 'swap' });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://luminaui.vercel.app';
 
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
   },
   description: "Transform any image into beautiful, accessible design systems for shadcn/ui. Generate semantic color themes with automatic dark mode using OKLCH color space. No LCH guesswork needed.",
   keywords: [
+    "image to shadcn theme",
     "shadcn ui theme generator",
     "design system generator",
     "color palette generator",
@@ -89,8 +91,8 @@ export const metadata: Metadata = {
       { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
   },
-  verification : {
-    google : "5t4zBjhovVUsu3rVsR2HSiuUOu6yqVbHSusUkSFdnjY"
+  verification: {
+    google: "5t4zBjhovVUsu3rVsR2HSiuUOu6yqVbHSusUkSFdnjY"
   },
   manifest: '/manifest.webmanifest',
   alternates: {
@@ -143,9 +145,10 @@ export default function RootLayout({
         className={`${jetbrainsMono.variable} ${geistMono.variable} ${inter.variable} font-jetbrains-mono antialiased`}
       >
         <ThemeProvider attribute={"class"} defaultTheme="system" enableSystem disableTransitionOnChange>
+          <GlobalThemeInjector />
           <Navbar />
           <div className="pt-16 px-4 max-sm:px-2">
-          {children}
+            {children}
           </div>
           <Toaster />
         </ThemeProvider>
